@@ -1,4 +1,8 @@
 <mat-toolbar color="primary">
-  <span> {{ title }} </span>
+  <mat-toolbar-row> {{ title }} </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-raised-button color="accent">Start</button>
+    <button mat-raised-button color="warn" disabled>Stop</button>
+  </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
