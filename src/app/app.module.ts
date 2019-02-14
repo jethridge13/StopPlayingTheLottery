@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material.module';
+import { PowerballComponent } from './powerball/powerball.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PowerballComponent
   ],
   imports: [
     BrowserModule,
