@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { MaterialModule } from '../material.module';
 
+import { PowerballService } from '../powerball.service';
+
 @Component({
   selector: 'app-powerball',
   templateUrl: './powerball.component.html',
@@ -9,7 +11,11 @@ import { MaterialModule } from '../material.module';
 })
 export class PowerballComponent implements OnInit {
 
-  constructor() { }
+  winningNumbers = [];
+  playerNumbers = [];
+
+  constructor(private powerball: PowerballService) {
+  }
 
   ngOnInit() {
   }
