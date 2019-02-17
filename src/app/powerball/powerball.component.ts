@@ -15,6 +15,8 @@ export class PowerballComponent implements OnInit {
   playerNumbers = [];
 
   constructor(private powerball: PowerballService) {
+    this.winningNumbers = powerball.generateNumbers();
+    this.playerNumbers = powerball.generateNumbers();
   }
 
   ngOnInit() {

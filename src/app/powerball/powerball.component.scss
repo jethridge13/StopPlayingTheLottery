@@ -2,6 +2,15 @@ mat-card {
 	margin: 8px;
 }
 
+span {
+	font-size: 2rem;
+	margin: 8px;
+}
+
+span:last-child {
+	color: red;
+}
+
 @media (min-width: 600px) {
 	mat-card {
 		margin: 8px auto;

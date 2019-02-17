@@ -9,9 +9,10 @@ export class PowerballService {
 
   generateNumbers(): number[] {
     const numbers = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       numbers.push(this.num.generateNumber(1, 69));
     }
+    numbers.push(this.num.generateNumber(1, 26));
     return numbers;
   }
 
