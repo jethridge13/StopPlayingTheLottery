@@ -26,6 +26,11 @@ export class PowerballComponent implements OnInit {
     while (this.disableStart) {
       this.winningNumbers = this.powerball.generateNumbers();
       this.playerNumbers = this.powerball.generateNumbers();
+      const win = this.powerball.compareForWin(this.winningNumbers, this.playerNumbers);
+      if (win) {
+        this.disableStart = false;
+        this.disableStop = true;
+      }
       await this.sleep(1);
     }
   }
