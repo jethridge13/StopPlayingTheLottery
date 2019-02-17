@@ -14,9 +14,35 @@ export class PowerballComponent implements OnInit {
   winningNumbers = [];
   playerNumbers = [];
 
+  disableStart = false;
+  disableStop = true;
+
   constructor(private powerball: PowerballService) {
     this.winningNumbers = powerball.generateNumbers();
     this.playerNumbers = powerball.generateNumbers();
+  }
+
+  async run() {
+    while (this.disableStart) {
+      this.winningNumbers = this.powerball.generateNumbers();
+      this.playerNumbers = this.powerball.generateNumbers();
+      await this.sleep(1);
+    }
+  }
+
+  start(): void {
+    this.disableStart = true;
+    this.disableStop = false;
+    this.run();
+  }
+
+  stop(): void {
+    this.disableStart = false;
+    this.disableStop = true;
+  }
+
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   ngOnInit() {

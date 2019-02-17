@@ -4,6 +4,10 @@
 	<mat-card-content>
 		<span *ngFor="let number of winningNumbers">{{ number }}</span>
 	</mat-card-content>
+	<mat-card-actions>
+		<button mat-raised-button color="accent" (click)="start()" [disabled]="disableStart">Start</button>
+    	<button mat-raised-button color="warn" (click)="stop()" [disabled]="disableStop">Stop</button>
+	</mat-card-actions>
 </mat-card>
 
 <mat-card>
