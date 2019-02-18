@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 
 import { MaterialModule } from './material.module';
 import { PowerballComponent } from './powerball/powerball.component';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PowerballComponent
+    PowerballComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,

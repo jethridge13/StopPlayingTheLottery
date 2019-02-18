@@ -8,6 +8,7 @@ import { NumberGeneratorService } from './number-generator.service';
 export class PowerballService {
 
   // TODO Add tests to make sure this works
+  // TODO Add win conditions for winning aside from jackpot
   compareForWin(nums1, nums2): boolean {
     const mainNums1 = nums1.slice(0, -1);
     const mainNums2 = nums2.slice(0, -1);
