@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from '../material.module';
 
 import { PowerballService } from '../powerball.service';
+import { StatsSharingService } from '../stats-sharing.service';
 
 @Component({
   selector: 'app-powerball',
@@ -17,7 +18,8 @@ export class PowerballComponent implements OnInit {
   disableStart = false;
   disableStop = true;
 
-  constructor(private powerball: PowerballService) {
+  constructor(private powerball: PowerballService,
+    private stats: StatsSharingService) {
     this.winningNumbers = powerball.generateNumbers();
     this.playerNumbers = powerball.generateNumbers();
   }
@@ -26,10 +28,12 @@ export class PowerballComponent implements OnInit {
     while (this.disableStart) {
       this.winningNumbers = this.powerball.generateNumbers();
       this.playerNumbers = this.powerball.generateNumbers();
+      this.stats.incrementRounds();
       const win = this.powerball.compareForWin(this.winningNumbers, this.playerNumbers);
       if (win) {
         this.disableStart = false;
         this.disableStop = true;
+        this.stats.incrementWins();
       }
       await this.sleep(1);
     }
