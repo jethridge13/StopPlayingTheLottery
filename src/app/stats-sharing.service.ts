@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +6,11 @@ import { Injectable } from '@angular/core';
 export class StatsSharingService {
 
   rounds = 0;
+  roundsEvent = new EventEmitter<number>();
   wins = 0;
+  winsEvent = new EventEmitter<number>();
   money = 0;
+  moneyEvent = new EventEmitter<number>();
 
   // Getters
   getTotalRounds(): number {
@@ -22,39 +25,49 @@ export class StatsSharingService {
     return this.money;
   }
 
-  // Getters with observables
-  getTotalRoundsObs() {
-
+  // EventEmitters
+  getTotalRoundsEvent(): EventEmitter<number> {
+    return this.roundsEvent;
   }
 
-  getWinsObs() {
-
+  getWinsEvent(): EventEmitter<number> {
+    return this.winsEvent;
   }
 
-  getMoneyObs() {
-
+  getMoneyEvent(): EventEmitter<number> {
+    return this.moneyEvent;
   }
 
   // Setters
   setTotalRounds(n: number): void {
     this.rounds = n;
+    this.roundsEvent.emit(n);
   }
 
   setWins(n: number): void {
     this.wins = n;
+    this.winsEvent.emit(n);
   }
 
   setMoney(n: number): void {
     this.money = n;
+    this.moneyEvent.emit(n);
   }
 
   // Other methods
   incrementRounds(): void {
     this.rounds += 1;
+    this.roundsEvent.emit(this.rounds);
   }
 
   incrementWins(): void {
     this.wins += 1;
+    this.winsEvent.emit(this.wins);
+  }
+
+  incrementMoney(n: number): void {
+    this.money += n;
+    this.moneyEvent.emit(this.money);
   }
 
   constructor() { }
