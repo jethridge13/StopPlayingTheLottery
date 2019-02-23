@@ -11,6 +11,7 @@ export class StatisticsComponent implements OnInit {
 
   wins = 0;
   totalRounds = 0;
+  jackpots = 0;
   money = 0;
 
   constructor(private stats: StatsSharingService) {

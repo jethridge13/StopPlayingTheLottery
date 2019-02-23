@@ -11,6 +11,8 @@ export class StatsSharingService {
   winsEvent = new EventEmitter<number>();
   money = 0;
   moneyEvent = new EventEmitter<number>();
+  jackpots = 0;
+  jackpotsEvent = new EventEmitter<number>();
 
   // Getters
   getTotalRounds(): number {
@@ -25,6 +27,10 @@ export class StatsSharingService {
     return this.money;
   }
 
+  getJackpots(): number {
+    return this.jackpots;
+  }
+
   // EventEmitters
   getTotalRoundsEvent(): EventEmitter<number> {
     return this.roundsEvent;
@@ -36,6 +42,10 @@ export class StatsSharingService {
 
   getMoneyEvent(): EventEmitter<number> {
     return this.moneyEvent;
+  }
+
+  getJackpotsEvent(): EventEmitter<number> {
+    return this.jackpotsEvent;
   }
 
   // Setters
@@ -54,7 +64,12 @@ export class StatsSharingService {
     this.moneyEvent.emit(n);
   }
 
-  // Other methods
+  setJackpots(n: number): void {
+    this.jackpots = n;
+    this.jackpotsEvent.emit(n);
+  }
+
+  // Increment methods
   incrementRounds(): void {
     this.rounds += 1;
     this.roundsEvent.emit(this.rounds);
@@ -68,6 +83,11 @@ export class StatsSharingService {
   incrementMoney(n: number): void {
     this.money += n;
     this.moneyEvent.emit(this.money);
+  }
+
+  incrementJackpots(): void {
+    this.jackpots += 1;
+    this.jackpotsEvent.emit(this.jackpots);
   }
 
   constructor() { }

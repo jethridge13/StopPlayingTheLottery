@@ -11,7 +11,7 @@ import { StatsSharingService } from '../stats-sharing.service';
   styleUrls: ['./powerball.component.scss']
 })
 export class PowerballComponent implements OnInit {
-
+// TODO Money
   winningNumbers = [];
   playerNumbers = [];
 
@@ -29,11 +29,19 @@ export class PowerballComponent implements OnInit {
       this.winningNumbers = this.powerball.generateNumbers();
       this.playerNumbers = this.powerball.generateNumbers();
       this.stats.incrementRounds();
-      const win = this.powerball.compareForWin(this.winningNumbers, this.playerNumbers);
+      this.stats.incrementMoney(-2);
+      const win = this.powerball.compareForJackpot(this.winningNumbers, this.playerNumbers);
       if (win) {
         this.disableStart = false;
         this.disableStop = true;
-        this.stats.incrementWins();
+        this.stats.incrementJackpots();
+        this.stats.incrementMoney(40000000);
+      } else {
+        const moneyGained = this.powerball.compareForWin(this.winningNumbers, this.playerNumbers)
+        if (moneyGained > 0) {
+          this.stats.incrementWins();
+          this.stats.incrementMoney(moneyGained);
+        }
       }
       await this.sleep(1);
     }
