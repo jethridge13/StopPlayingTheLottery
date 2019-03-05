@@ -9,3 +9,13 @@
 	<mat-card-subtitle>Net Money</mat-card-subtitle>
 	<mat-card-content>{{ money }}</mat-card-content>
 </mat-card>
+
+<mat-card>
+	<mat-card-title>Win History</mat-card-title>
+	<div *ngFor="let win of winHistory">
+		<mat-card-subtitle>Round: {{ win.round }}</mat-card-subtitle>
+		<mat-card-content>Winning Numbers: {{ win.winningNumbers }}</mat-card-content>
+		<mat-card-content>Your Numbers: {{ win.userNumbers }}</mat-card-content>
+		<mat-card-content>${{ win.money }}</mat-card-content>
+	</div>
+</mat-card>

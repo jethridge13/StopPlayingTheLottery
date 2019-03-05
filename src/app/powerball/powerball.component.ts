@@ -37,10 +37,11 @@ export class PowerballComponent implements OnInit {
         this.stats.incrementJackpots();
         this.stats.incrementMoney(40000000);
       } else {
-        const moneyGained = this.powerball.compareForWin(this.winningNumbers, this.playerNumbers)
+        const moneyGained = this.powerball.compareForWin(this.winningNumbers, this.playerNumbers);
         if (moneyGained > 0) {
           this.stats.incrementWins();
           this.stats.incrementMoney(moneyGained);
+          this.stats.addWin(this.winningNumbers, this.playerNumbers, moneyGained);
         }
       }
       await this.sleep(1);

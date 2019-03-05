@@ -13,7 +13,9 @@ export class StatisticsComponent implements OnInit {
   totalRounds = 0;
   jackpots = 0;
   money = 0;
+  winHistory = [];
 
+  // TODO Add trackBy for efficiency
   constructor(private stats: StatsSharingService) {
     const _totalRoundsSubscription = stats.getTotalRoundsEvent().subscribe((rounds) => {
       this.totalRounds = rounds;
@@ -23,6 +25,9 @@ export class StatisticsComponent implements OnInit {
     });
     const _moneySubscription = stats.getMoneyEvent().subscribe((money) => {
       this.money = money;
+    });
+    const _winHistorySubscription = stats.getHistoryEvent().subscribe((history) => {
+      this.winHistory = history;
     });
   }
 
