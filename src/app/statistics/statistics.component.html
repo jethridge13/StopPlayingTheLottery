@@ -1,24 +1,26 @@
-<mat-card>
-	<mat-card-title>Statistics</mat-card-title>
-	<mat-card-subtitle>Total Rounds</mat-card-subtitle>
-	<mat-card-content>{{ totalRounds }}</mat-card-content>
-	<mat-card-subtitle>Wins</mat-card-subtitle>
-	<mat-card-content>{{ wins }}</mat-card-content>
-	<mat-card-subtitle>Jackpots</mat-card-subtitle>
-	<mat-card-content>{{ jackpots }}</mat-card-content>
-	<mat-card-subtitle>Net Money</mat-card-subtitle>
-	<mat-card-content>{{ money }}</mat-card-content>
-</mat-card>
-
-<mat-card>
-	<mat-card-title>Win History</mat-card-title>
-	<mat-list>
-		<mat-list-item *ngFor="let win of winHistory">
-			<span matLine>Round: {{ win.round }}</span>
-			<span matLine>Winning Numbers: {{ win.winningNumbers }}</span>
-			<span matLine>Your Numbers: {{ win.userNumbers }}</span>
-			<span matLine>Money won: ${{ win.money }}</span>
-			<mat-divider></mat-divider>
-		</mat-list-item>
-	</mat-list>
-</mat-card>
+<mat-accordion multi="true">
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>Statistics</mat-expansion-panel-header>
+		<mat-list>
+			<mat-list-item>Total Rounds: {{ totalRounds }}</mat-list-item>
+			<mat-list-item>Wins: {{ wins }}</mat-list-item>
+			<mat-list-item>Jackpots: {{ jackpots }}</mat-list-item>
+			<mat-list-item>Net Money: {{ money }}</mat-list-item>
+		</mat-list>
+	</mat-expansion-panel>
+	
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>Win History</mat-panel-title>
+		</mat-expansion-panel-header>
+		<mat-list>
+			<mat-list-item *ngFor="let win of winHistory">
+				<span matLine>Round: {{ win.round }}</span>
+				<span matLine>Winning Numbers: {{ win.winningNumbers }}</span>
+				<span matLine>Your Numbers: {{ win.userNumbers }}</span>
+				<span matLine>Money won: ${{ win.money }}</span>
+				<mat-divider></mat-divider>
+			</mat-list-item>
+		</mat-list>
+	</mat-expansion-panel>
+</mat-accordion>
