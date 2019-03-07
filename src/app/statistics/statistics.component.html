@@ -12,10 +12,13 @@
 
 <mat-card>
 	<mat-card-title>Win History</mat-card-title>
-	<div *ngFor="let win of winHistory">
-		<mat-card-subtitle>Round: {{ win.round }}</mat-card-subtitle>
-		<mat-card-content>Winning Numbers: {{ win.winningNumbers }}</mat-card-content>
-		<mat-card-content>Your Numbers: {{ win.userNumbers }}</mat-card-content>
-		<mat-card-content>${{ win.money }}</mat-card-content>
-	</div>
+	<mat-list>
+		<mat-list-item *ngFor="let win of winHistory">
+			<span matLine>Round: {{ win.round }}</span>
+			<span matLine>Winning Numbers: {{ win.winningNumbers }}</span>
+			<span matLine>Your Numbers: {{ win.userNumbers }}</span>
+			<span matLine>Money won: ${{ win.money }}</span>
+			<mat-divider></mat-divider>
+		</mat-list-item>
+	</mat-list>
 </mat-card>
