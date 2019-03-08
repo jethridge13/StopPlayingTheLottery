@@ -33,6 +33,7 @@ export class PowerballService {
   // TODO Tests
   // Prize money taken from Powerball's official prize table
   compareForWin(nums1, nums2): number {
+    // TODO Double check winnings payouts
     let prize = 0;
     const mainNums1 = nums1.slice(0, -1);
     const mainNums2 = nums2.slice(0, -1);
@@ -51,7 +52,7 @@ export class PowerballService {
       }
     }
 
-    switch(matchingNums) {
+    switch (matchingNums) {
       case 0:
       case 1:
         if (powMatch) {
@@ -90,8 +91,13 @@ export class PowerballService {
 
   generateNumbers(): number[] {
     const numbers = [];
+    const numberPool = Array.from(new Array(69), (val, index) => {
+      return index + 1;
+    });
     for (let i = 0; i < 5; i++) {
-      numbers.push(this.num.generateNumber(1, 69));
+      const n = this.num.generateNumber(0, numberPool.length);
+      numbers.push(numberPool[n]);
+      numberPool.splice(n, 1);
     }
     numbers.push(this.num.generateNumber(1, 26));
     return numbers;
