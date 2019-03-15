@@ -11,12 +11,12 @@ import { StatsSharingService } from '../stats-sharing.service';
   styleUrls: ['./powerball.component.scss']
 })
 export class PowerballComponent implements OnInit {
-// TODO Money
   winningNumbers = [];
   playerNumbers = [];
 
   disableStart = false;
   disableStop = true;
+  holdNumbers = false;
 
   constructor(private powerball: PowerballService,
     private stats: StatsSharingService) {
@@ -26,7 +26,9 @@ export class PowerballComponent implements OnInit {
 
   async run() {
     while (this.disableStart) {
-      this.winningNumbers = this.powerball.generateNumbers();
+      if (!this.holdNumbers) {
+        this.winningNumbers = this.powerball.generateNumbers();
+      }
       this.playerNumbers = this.powerball.generateNumbers();
       this.stats.incrementRounds();
       this.stats.incrementMoney(-2);
@@ -57,6 +59,10 @@ export class PowerballComponent implements OnInit {
   stop(): void {
     this.disableStart = false;
     this.disableStop = true;
+  }
+
+  holdChange(e): void {
+    this.holdNumbers = !this.holdNumbers;
   }
 
   sleep(ms) {
