@@ -1,0 +1,11 @@
+mat-expansion-panel {
+	margin: 0px 8px;
+	max-width: 632px;
+}
+
+@media (min-width: 600px) {
+	
+	mat-expansion-panel {
+		margin: 0px auto;
+	}
+}
