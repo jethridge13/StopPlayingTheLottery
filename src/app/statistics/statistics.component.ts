@@ -34,4 +34,8 @@ export class StatisticsComponent implements OnInit {
   ngOnInit() {
   }
 
+  resetHistory() {
+    this.winHistory = [];
+  }
+
 }
